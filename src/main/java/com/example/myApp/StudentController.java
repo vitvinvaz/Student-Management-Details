@@ -26,7 +26,7 @@ public class StudentController {
 		List<Student> student = service.getAllStudents();
 		for(int i = 0;i<student.size();i++){
 			Student s = student.get(i);
-			s.tempId = i + 1;
+			s.setTempId(i+1);
 		}
 		return student;
 	}

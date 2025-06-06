@@ -1,11 +1,8 @@
 package com.example.myApp;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 @Component
 @Entity
 public class Student {
@@ -13,6 +10,7 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int studentId;
+	@Transient
 	int tempId;
 	String studentName;
 	String email;
