@@ -13,6 +13,7 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int studentId;
+	int tempId;
 	String studentName;
 	String email;
 	String courseName;
@@ -30,6 +31,13 @@ public class Student {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
+	public int getTempId() {
+		return tempId;
+	}
+	public void setTempId(int tempId) {
+		this.tempId = tempId;
+	}
+
 	public String getStudentName() {
 		return studentName;
 	}
