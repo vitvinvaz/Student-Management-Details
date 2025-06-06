@@ -1,6 +1,8 @@
 package com.example.myApp;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,13 +23,17 @@ public class StudentController {
    
 	@GetMapping("/students")
 	public List<Student> getAllStudents(){
-		return service.getAllStudents();
+		List<Student> student = service.getAllStudents();
+		for(int i = 0;i<student.size();i++){
+			Student s = student.get(i);
+			s.studentId = i + 1;
+		}
+		return student;
 	}
 	
 	@GetMapping("/students/{studentId}")
 	public Student getStudentById(@PathVariable int studentId) {
 		return service.getStudentById(studentId);
-				
 	}
 	
 	@PostMapping("/students")
