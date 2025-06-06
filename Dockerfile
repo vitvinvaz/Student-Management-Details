@@ -1,14 +1,11 @@
-# Use Java 21 base image
-FROM eclipse-temurin:21-jdk-alpine
-
-# Set working directory
+FROM maven:3.9.8-eclipse-temurin-21 AS build
+COPY src /app/src
+COPY pom.xml /app
 WORKDIR /app
+RUN mvn clean package -DskipTests
 
-# Copy built JAR into the container
-COPY target/student-management-details-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose Spring Boot default port
+FROM openjdk:21
+COPY --from=build /app/target/*.jar /app/Ecommerce.jar
+WORKDIR /app
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "Ecommerce.jar"]
