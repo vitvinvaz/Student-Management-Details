@@ -51,8 +51,8 @@ public class StudentController {
 		 service.deleteStudent(studentId);
 	}
 	
-	
-	
-	
-	
+	@GetMapping("/cron")
+	public String cron(){
+		return "success";
+	}
 }
